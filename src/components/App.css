@@ -1,0 +1,29 @@
+body {
+  background-color: #354f52;
+  color: #cad2c5;
+}
+
+/* Css for Header Links */
+
+
+/* Fonts and sizes for the Posts */
+#postTitle {
+  font-size: 35px;
+  border: solid #cad2c5;
+  background-color:#2f3e46 ;
+}
+
+#postPrice {
+  font-size: 20px;
+  color:#ecf39e
+}
+
+#postUsername {
+  font-size: 15px;
+  font-style: italic;
+
+}
+
+#postDescription {
+  font-size: 20px;
+}

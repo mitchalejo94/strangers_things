@@ -1,0 +1,23 @@
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30%;
+  margin-right: 30%;
+  width: 300px;
+  align-items: center;
+}
+.userNameAndPassword {
+  font-size: 20px;
+}
+
+button {
+  width: 8rem;
+  height: 2rem;
+  font-size: 15px;
+  background-color: #cad2c5;
+  color: #2f3e46;
+  margin-top: 10px;
+}
+button:hover {
+  font-weight: bolder;
+}
