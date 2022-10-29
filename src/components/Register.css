@@ -8,7 +8,7 @@
     align-items: center;
 }
 
-button {
+#registerButton {
     width: 8rem;
     height: 2rem;
     font-size: 15px;
@@ -16,6 +16,6 @@ button {
     color: #2f3e46;
     margin-top: 10px;
   }
-  button:hover {
+  #registerButton:hover {
     font-weight: bolder;
   }

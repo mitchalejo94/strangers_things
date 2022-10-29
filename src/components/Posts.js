@@ -1,20 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {fetchPosts} from "../api/api";
 
-const Posts = () => {
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    fetchPosts()
-      .then((response) => {
-        console.log(response, "this is response in Posts.js");
-        const posts = response.data.posts;
-        setPosts(posts);
-        console.log(posts, "this is posts from Post.js");
-      })
-      .catch((error) => {
-        console.log(error, "error from Posts.js");
-      });
-  }, []);
+
+const Posts = ({posts}) => {
+
 
   //need to map over the Posts
   const postMapping = posts.map((post) => {
