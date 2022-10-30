@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 
-const Posts = ({posts}) => {
+const Posts = ({posts, setPosts, token }) => {
 
 
   //need to map over the Posts

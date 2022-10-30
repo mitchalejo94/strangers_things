@@ -66,6 +66,7 @@ const AddPost = ({ token, setPosts }) => {
       <div>
       <label htmlFor="location">Location</label>
         <input
+        className="inputField"
           type="text"
           placeholder="location"
           value={location}

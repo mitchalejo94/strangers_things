@@ -45,7 +45,7 @@ const App = () => {
         <Route exact path="/posts" element={<Posts posts = {posts}/>}></Route>
         {/* <Route exact path="/Login" element={<Login setToken={setToken}/>}></Route> */}
 
-        <Route exact path="/AddPost" element={<AddPost />}></Route>
+        <Route exact path="/AddPost" element={<AddPost AddPost = {AddPost} />}></Route>
       </Routes>
     </div>
   );
