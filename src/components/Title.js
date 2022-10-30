@@ -10,9 +10,9 @@ const Title = ({setToken}) => {
     <header id="entireHeader">
         <nav>
         <Link className="links" to='/Posts'>Posts </Link>
-        <button id = "logOut" onClick={logOut} > Logout</button>
-        <Link className="links" to='/account/login'>Login </Link>
         <Link className="links" to='/account/register'>Register</Link>
+        <Link className="links" to='/account/login'>Login </Link>
+        <button id="logOut" onClick={logOut} > Logout</button>
         
         <div>
         <h1 id = "headerTitle">Stranger's Things</h1>

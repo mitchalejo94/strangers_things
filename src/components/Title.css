@@ -22,3 +22,10 @@
 .links:hover {
     font-weight: bold;
 }
+
+#logOut{
+  width: 100px;
+  border: solid red;
+  display:flex;
+  align-items: center;
+}
