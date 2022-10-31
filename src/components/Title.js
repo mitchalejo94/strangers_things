@@ -12,7 +12,8 @@ const Title = ({setToken}) => {
         <Link className="links" to='/Posts'>Posts </Link>
         <Link className="links" to='/account/register'>Register</Link>
         <Link className="links" to='/account/login'>Login </Link>
-        <button id="logOut" onClick={logOut} > Logout</button>
+        <Link className="links"id="logOut" onClick={logOut} > Logout </Link>
+      
         
         <div>
         <h1 id = "headerTitle">Stranger's Things</h1>

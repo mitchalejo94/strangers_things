@@ -188,9 +188,92 @@ export async function loginUser(username, password) {
   }
 }
 
-// export const getGuest = async (token)=>{
+// export const addComment = async (token, postId, comment)=>{
 //     try{
-//         const {success, error, data} = await callAPI
+//         const {success, error, data} = await callAPI (`${URL}/posts/${postId}`,{
+//             token: token,
+//             method: "POST",
+//             body:{
+//                 comment:{
+//                     content: comment
+//                 }
 
+//             }
+//         })
+//         if(success){
+//             return{
+//                 success:success,
+//                 error: null,
+//                 comment: data.comment,
+//             }
+//         }else{
+//             return{
+//                 success:success,
+//                 error:error.message,
+//                 comment:null
+//             }
+//         }
+//     }catch(error){
+//         console.error(`POST /${URL}/posts/${postId}/comments failed:`, error)
+//         return{
+//             success: success,
+//             error:"Failed to create comment",
+//             comment: null
+    
+//         };
 //     }
 // }
+
+export const getGuest = async (token) => {
+    try {
+      const {success, error, data} = await callAPI('/users/me', {
+        token: token
+      });
+  
+      if (success) {
+        return {
+        error: null,
+        username: data.username
+        }
+      } else {
+        return {
+          error: error.message,
+          username: null
+        }
+      }
+    } catch (error) {
+      console.error('failed to fetch guest', error)
+  
+      return {
+        error: 'Failed to load username information',
+        username: null
+      };
+    }
+  };
+  
+  export const deletePost = async (token, postId) => {
+    try {
+      const {success, error, data} = await callAPI(`/posts/${postId}`, {
+        method: "DELETE",
+        token: token
+      });
+  
+        if (success) {
+          return {
+            error: null,
+            data: null
+          }; 
+          } else {
+            return {
+              error: error.message,
+              data: null
+            };
+          }
+    }catch(error) {
+        console.error("DELETE /posts/postId failed:", error);
+        return {
+          error: "Failed to delete post",
+          data: null
+        };
+    }
+  }
