@@ -32,7 +32,7 @@ const AddPost = ({ token, setPosts }) => {
           setPosts((prevPosts) => [...prevPosts, post]);
           setDescription("");
           setPrice("");
-          navigate.push("/Posts");
+          navigate("/Posts");
         } else {
           setErrorMessage(error);
         }
