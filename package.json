@@ -6,7 +6,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "react-scripts start",
     "build": "react-scripts build"
-
   },
   "keywords": [],
   "author": "",
@@ -14,8 +13,9 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.2",
-    "react-scripts": "^5.0.1"
+    "react-router-dom": "^5.3.4",
+    "react-scripts": "^5.0.1",
+    "react-switch": "^7.0.0"
   },
   "browserslist": {
     "production": [
@@ -29,6 +29,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {},
   "description": ""
 }
