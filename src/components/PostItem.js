@@ -11,6 +11,7 @@ const PostItem = ({ posts }) => {
             {posts.description}
             <div className="extra content">
               <div className=" center aligned header">
+                <p>{posts.description}</p>
                 <Link to="">View Post</Link>
               </div>
             </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PostItem from "./PostItem";
+import "./Posts.css"
 import { fetchPosts } from "../api/api"
 
 const Posts = ({posts})=>{
