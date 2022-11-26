@@ -20,12 +20,6 @@ export const App = () => {
   //useEffect to fetchPosts
   useEffect(() => {
     const getPosts = async () => {
-      // const {error, posts} = await fetchPosts()
-
-      // if (error){
-      //   console.error(error);
-      // }
-
       try {
         const result = await fetchPosts();
         setPost(result);

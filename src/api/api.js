@@ -48,33 +48,6 @@ export const fetchPosts = async () => {
   }
 };
 
-// export const fetchGuest = async (token) => {
-//   try {
-//     const {success, error, data} = await callAPI('/users/me', {
-//       token: token
-//     });
-
-//     if (success) {
-//       return {
-//       error: null,
-//       username: data.username
-//       }
-//     } else {
-//       return {
-//         error: error.message,
-//         username: null
-//       }
-//     }
-//   } catch (error) {
-//     console.error('failed to fetch guest', error)
-
-//     return {
-//       error: 'Failed to load username information',
-//       username: null
-//     };
-//   }
-// };
-
 export const registerUser = async (username, password) => {
   try {
     const { success, error, data } = await callAPI("/users/register", {
@@ -181,3 +154,48 @@ export const loginUser = async (username, password) => {
     };
   }
 };
+
+export const createPost = async (token, title, description, price, location, willDeliver) => {
+  try{
+    const post = {
+      description:description
+    }
+    if (location){
+      post.location = location
+    }
+    if(price){
+      post.price = price
+    }
+    const {success, error,data}= await callAPI('/posts',{
+      token: token,
+      method: "POST",
+      body:{
+        post:{
+          title,
+          description,
+          price,
+          location,
+          willDeliver
+        }
+      }
+    })
+    if (success){
+      return{
+        error:null,
+        post: data.post
+      }
+    }else{
+      return{
+        error:null,
+        post:data.post
+      }
+    }
+  }catch(error){
+    console.error(error, "error posting posts");
+
+    return{
+      error: 'Failed to create post',
+      post: null
+    }
+  }
+}
