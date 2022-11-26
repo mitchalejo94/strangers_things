@@ -123,7 +123,7 @@ export const fetchGuest = async (token) => {
     //   return data;
     // } catch {
     //   console.log(error);
-    const { success, error, data } = await callAPI(`/users/me`, {
+    const { success, error, data } = await callAPI('/users/me', {
       token: token,
     });
     if (success) {
@@ -148,7 +148,7 @@ export const fetchGuest = async (token) => {
 
 export const loginUser = async (username, password) => {
   try {
-    const { success, error, data } = await callAPI("users/login", {
+    const { success, error, data } = await callAPI("/users/login", {
       method: "POST",
       body: {
         user: {

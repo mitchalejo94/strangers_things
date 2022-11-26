@@ -15,9 +15,10 @@ const AccountForm = ({ setToken }) => {
     event.preventDefault();
     const authFn = action === "register" ? registerUser : loginUser;
     const { error, token, message } = await authFn(username, password);
+    if(error){
 
     console.error(error);
-    
+}
     setToken(token);
     if (token) {
       history.push("/");
