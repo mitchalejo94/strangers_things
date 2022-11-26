@@ -77,79 +77,7 @@ export const fetchPosts = async () => {
 
 export const registerUser = async (username, password) => {
   try {
-    const {success, error, data} = await fetch(`${URL}/users/register`, {
-      method: "POST",
-      body:{
-        guest:{
-          username,
-          password,
-        }
-      }
-      })
-
-    if (success){
-      return{
-        error: null,
-        token:data.token,
-        message:data.message
-      }
-    }else{
-      return{
-        error: error.message,
-        token: null,
-        message: null,
-      }
-    }
-  } catch (error) {
-    console.error("Cant register user,", error);
-
-    return{
-      error: "Registration Failed",
-      token: null,
-      message: null,
-    }
-  }
-};
-
-export const fetchGuest = async (token) => {
-  try {
-  //   const response = await fetch(`${URL}/guests/me`, {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   });
-  //   const { data } = await response.json();
-  //   return data;
-  // } catch {
-  //   console.log(error);
-  const {success, error, data} = await callAPI ('/users/me',{
-    token:token
-  })
-  if(success){
-    return {
-      error:null,
-      username: data.username
-    }
-  }else{
-    return{
-      error: error.message,
-      username:null
-    }
-  }
-  }catch(error){
-    console.error(error, "did not fetch guest");
-    return{
-      error: 'Failed to load username info',
-      username: null
-
-    }
-  }
-};
-
-export const loginUser = async (username, password) => {
-  try {
-    const { success, error, data } = await callAPI('users/login', {
+    const { success, error, data } = await callAPI("/users/register", {
       method: "POST",
       body: {
         user: {
@@ -173,10 +101,81 @@ export const loginUser = async (username, password) => {
       };
     }
   } catch (error) {
-    console.error(error, "error registering users");
+    console.error("Cant register user,", error);
 
     return {
-      error: "Registration Failed.",
+      error: "Registration Failed",
+      token: null,
+      message: null,
+    };
+  }
+};
+
+export const fetchGuest = async (token) => {
+  try {
+    //   const response = await fetch(`${URL}/guests/me`, {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //   });
+    //   const { data } = await response.json();
+    //   return data;
+    // } catch {
+    //   console.log(error);
+    const { success, error, data } = await callAPI(`/users/me`, {
+      token: token,
+    });
+    if (success) {
+      return {
+        error: null,
+        username: data.username,
+      };
+    } else {
+      return {
+        error: error.message,
+        username: null,
+      };
+    }
+  } catch (error) {
+    console.error(error, "did not fetch guest");
+    return {
+      error: "Failed to load username info",
+      username: null,
+    };
+  }
+};
+
+export const loginUser = async (username, password) => {
+  try {
+    const { success, error, data } = await callAPI("users/login", {
+      method: "POST",
+      body: {
+        user: {
+          username,
+          password,
+        },
+      },
+    });
+
+    if (success) {
+      return {
+        error: null,
+        token: data.token,
+        message: data.message,
+      };
+    } else {
+      return {
+        error: error.message,
+        token: null,
+        message: null,
+      };
+    }
+  } catch (error) {
+    console.error(error, "error logging in users");
+
+    return {
+      error: "Log in Failed.",
       token: null,
       message: null,
     };

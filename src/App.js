@@ -54,7 +54,7 @@ export const App = () => {
   const logOut = () => {
     setToken("");
     setGuest(null);
-    history, push("/");
+    history.push("/");
   };
 
   return (
