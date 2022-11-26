@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { createPost } from "../api/api";
+import "./PostCreateForm.css"
 
 const PostsCreateForm = ({ token, setPosts }) => {
   const [description, setDescription] = useState("");
@@ -14,6 +15,7 @@ const PostsCreateForm = ({ token, setPosts }) => {
 
   return (
     <form
+    id = "createForm"
       className="ui form"
       onSubmit={async (event) => {
         event.preventDefault();
@@ -37,7 +39,7 @@ const PostsCreateForm = ({ token, setPosts }) => {
           setErrorMessage(error);
         }
       }}>
-      <h2>Create your post</h2>
+      <h2>Create your Post</h2>
       <div>
         <label htmlFor="description">Post Description</label>
         <input
@@ -103,7 +105,7 @@ const PostsCreateForm = ({ token, setPosts }) => {
 
       {errorMessage ? <p className="ui negative message">{errorMessage}</p> : null}
 
-      <button type="submit" className="ui button">
+      <button id = "createPostButton" type="submit" className="ui button">
         Create Post
       </button>
     </form>

@@ -53,18 +53,21 @@ export const App = () => {
 
   return (
     <div>
-      <nav>
+      <nav id = "navLink">
         <Link className="item" to="/">
-          Home
+          Home 
         </Link>
         <Link className="item" to="/posts">
-          Posts
+          Posts 
+        </Link>
+        <Link className="item" to="/posts/create">
+        Create Post 
         </Link>
         <div className="right menu">
           {token ? (
-            <button onClick={logOut} className="item">
+            <Link onClick={logOut} className="item">
               Log Out
-            </button>
+            </Link>
           ) : (
             <>
               <Link className="item" to="/account/login">
@@ -93,7 +96,7 @@ export const App = () => {
         <Route className="item" path="/account/:action">
           <AccountForm setToken={setToken} />
         </Route>
-        
+
       </Switch>
     </div>
   );

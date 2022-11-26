@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { registerUser, loginUser } from "../api/api";
+import "./AccountForm.css"
 
 const AccountForm = ({ setToken }) => {
   const [username, setUsername] = useState("");
@@ -28,7 +29,7 @@ const AccountForm = ({ setToken }) => {
   const title = action === "login" ? "Log In" : "Sign Up";
 
   return (
-    <form className="ui form" onSubmit={handleSubmit}>
+    <form id="uiForm" onSubmit={handleSubmit}>
       <h1>{title}</h1>
       <div className="field">
         <label>Username</label>
@@ -52,9 +53,11 @@ const AccountForm = ({ setToken }) => {
           onChange={(event) => setPassword(event.target.value)}
         />
       </div>
-      <button className="ui button" type="submit">
+      <div>
+      <button id = "button" className="ui button" type="submit">
         {title}
       </button>
+      </div>
     </form>
   );
 };

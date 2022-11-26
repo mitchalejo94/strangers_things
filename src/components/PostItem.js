@@ -5,15 +5,17 @@ const PostItem = ({ posts }) => {
   return (
     <div>
       <div>
-        <div>{posts.author.username}</div>
+       
         <div>
-          <p>
-            {posts.description}
+          <p >
             <div className="extra content">
               <div className=" center aligned header">
-                <b>{posts.title}</b>
-                <p>{posts.description}</p>
-                {/* <b>{posts.price}</b> */}
+                <b id="postTitle">{posts.title}</b>
+                <p id="postDescription">{posts.description}</p>
+                <b>{posts.price}</b>
+                <br></br>
+                <div id = "postUsername">{posts.author.username}</div>
+                
                 <Link to="">View Post</Link>
               </div>
             </div>
