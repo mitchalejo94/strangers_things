@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { registerUser } from "../api/api";
+import { registerUser, loginUser } from "../api/api";
 
 const AccountForm = ({ setToken }) => {
   const [username, setUsername] = useState("");
@@ -9,21 +9,25 @@ const AccountForm = ({ setToken }) => {
   const history = useHistory();
   const { action } = useParams();
 
-  const handlesSubmit = async (event) => {
+  console.log("action", action);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const { data } = await registerUser(username, password);
-      setToken(data.token);
+    const authFn = action === "register" ? registerUser : loginUser;
+    const { error, token, message } = await authFn(username, password);
+
+    console.error(error);
+    
+    setToken(token);
+    if (token) {
       history.push("/");
-    } catch (error) {
-      console.error(error);
     }
   };
 
   const title = action === "login" ? "Log In" : "Sign Up";
 
   return (
-    <form className="ui form" onSubmit={handlesSubmit}>
+    <form className="ui form" onSubmit={handleSubmit}>
       <h1>{title}</h1>
       <div className="field">
         <label>Username</label>

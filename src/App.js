@@ -8,9 +8,11 @@ import "./App.css";
 
 export const App = () => {
   //useStates
-  const [token, setToken] = useState(window.localStorage.getItem("token") || null);
+  const [token, setToken] = useState(
+    window.localStorage.getItem("token") || null
+  );
   const [posts, setPost] = useState([]);
-  const [guest, setGuest] = useState (null)
+  const [guest, setGuest] = useState(null);
 
   //Assigning variable to useHistory
   const history = useHistory();
@@ -18,7 +20,6 @@ export const App = () => {
   //useEffect to fetchPosts
   useEffect(() => {
     const getPosts = async () => {
-
       // const {error, posts} = await fetchPosts()
 
       // if (error){
@@ -36,24 +37,25 @@ export const App = () => {
   }, []);
 
   ///need to get and set Guest
-  useEffect(()=>{
-    if (token){
-      const getGuest = async ()=>{
-        const {guest} = await fetchGuest (token)
-        setGuest (guest)
-      }
+  useEffect(() => {
+    if (token) {
+      const getGuest = async () => {
+        const { guest } = await fetchGuest(token);
+        setGuest(guest);
+      };
       getGuest();
     }
-  },[token]);
-
-  useEffect(()=>{
-    window.localStorage.setItem("token",token);
   }, [token]);
-  const logOut = ()=>{
+
+  useEffect(() => {
+    window.localStorage.setItem("token", token);
+  }, [token]);
+
+  const logOut = () => {
     setToken("");
     setGuest(null);
-    history,push ("/")
-  }
+    history, push("/");
+  };
 
   return (
     <div>
@@ -66,9 +68,9 @@ export const App = () => {
         </Link>
         <div className="right menu">
           {token ? (
-            <Link onClick={logOut} className="item">
+            <button onClick={logOut} className="item">
               Log Out
-            </Link>
+            </button>
           ) : (
             <>
               <Link className="item" to="/account/login">
@@ -83,7 +85,7 @@ export const App = () => {
       </nav>
       <Switch>
         <Route exact path="/">
-          <Home guest={guest}/>
+          <Home guest={guest} />
         </Route>
         <Route className="item" path="/posts">
           <Posts posts={posts} />
