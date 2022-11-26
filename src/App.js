@@ -1,7 +1,7 @@
 //Imports
 import React, { useState, useEffect } from "react";
 import { Route, Link, Switch, useHistory } from "react-router-dom";
-import { Home, Posts, AccountForm } from "./components";
+import { Home, Posts, AccountForm, PostsCreateForm } from "./components";
 // import Switch from "react-switch";
 import { fetchPosts, fetchGuest } from "./api/api";
 import "./App.css";
@@ -11,7 +11,7 @@ export const App = () => {
   const [token, setToken] = useState(
     window.localStorage.getItem("token") || null
   );
-  const [posts, setPost] = useState([]);
+  const [posts, setPosts] = useState([]);
   const [guest, setGuest] = useState(null);
 
   //Assigning variable to useHistory
@@ -22,7 +22,7 @@ export const App = () => {
     const getPosts = async () => {
       try {
         const result = await fetchPosts();
-        setPost(result);
+        setPosts(result);
       } catch (error) {
         console.error(error);
       }
@@ -81,12 +81,19 @@ export const App = () => {
         <Route exact path="/">
           <Home guest={guest} />
         </Route>
+
+        <Route className="item" path="/posts/create">
+          <PostsCreateForm token ={token} setPosts={setPosts}/>
+        </Route>
+
         <Route className="item" path="/posts">
           <Posts posts={posts} />
         </Route>
+
         <Route className="item" path="/account/:action">
           <AccountForm setToken={setToken} />
         </Route>
+        
       </Switch>
     </div>
   );

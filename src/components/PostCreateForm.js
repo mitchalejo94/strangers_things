@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { createPost } from "../api/api";
 
-const PostsForm = ({ token, setPosts }) => {
+const PostsCreateForm = ({ token, setPosts }) => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [title, setTitle] = useState("");
@@ -36,8 +36,7 @@ const PostsForm = ({ token, setPosts }) => {
         } else {
           setErrorMessage(error);
         }
-      }}
-    >
+      }}>
       <h2>Create your post</h2>
       <div>
         <label htmlFor="description">Post Description</label>
@@ -111,4 +110,4 @@ const PostsForm = ({ token, setPosts }) => {
   );
 };
 
-export default PostsForm;
+export default PostsCreateForm;
