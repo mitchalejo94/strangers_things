@@ -29,10 +29,12 @@ body {
 }
 
 #viewPost{
-  border: solid black;
+ color:#a5a58d ;
+  text-decoration: none;
 }
 #viewPost:hover{
   font-weight: bolder;
+  color:#cad2c5 ;
 }
 
 #postUsername {
@@ -42,4 +44,16 @@ body {
 
 #postDescription {
   font-size: 20px;
+}
+#createPostLink{
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 20px;
+  color:#cad2c5 
+
+}
+
+#createPostLink:hover{
+  font-weight: bolder;
 }

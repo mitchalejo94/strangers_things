@@ -45,6 +45,14 @@ export const App = () => {
     window.localStorage.setItem("token", token);
   }, [token]);
 
+  useEffect(() => {
+    if (token) {
+        window.localStorage.setItem("token", token);
+    } else {
+        window.localStorage.removeItem("token");
+    }
+}, [token]);
+
   const logOut = () => {
     setToken("");
     setGuest(null);
@@ -53,16 +61,16 @@ export const App = () => {
 
   return (
     <div>
-      <nav id = "navLink">
+      <nav>
         <Link className="item" to="/">
-          Home 
+          Home
         </Link>
         <Link className="item" to="/posts">
-          Posts 
+          Posts
         </Link>
-        <Link className="item" to="/posts/create">
-        Create Post 
-        </Link>
+        {/* <Link className="item" to="/posts/create">
+        Create Post
+        </Link> */}
         <div className="right menu">
           {token ? (
             <Link onClick={logOut} className="item">

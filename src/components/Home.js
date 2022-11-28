@@ -5,7 +5,7 @@ const Home = ({ guest }) => {
   return (
     <>
       <h1>Welcome to Stranger's Things</h1>
-      {guest && <h3>You are logged in - {guest.username} </h3>}
+      {guest && <h3>You are logged in - {guest} </h3>}
     </>
   );
 };

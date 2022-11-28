@@ -86,17 +86,7 @@ export const registerUser = async (username, password) => {
 
 export const fetchGuest = async (token) => {
   try {
-    //   const response = await fetch(`${URL}/guests/me`, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Authorization: `Bearer ${token}`,
-    //     },
-    //   });
-    //   const { data } = await response.json();
-    //   return data;
-    // } catch {
-    //   console.log(error);
-    const { success, error, data } = await callAPI('/users/me', {
+    const { success, error, data } = await callAPI("/users/me", {
       token: token,
     });
     if (success) {
@@ -155,47 +145,80 @@ export const loginUser = async (username, password) => {
   }
 };
 
-export const createPost = async (token, title, description, price, location, willDeliver) => {
-  try{
+export const createPost = async (
+  token,
+  title,
+  description,
+  price,
+  location,
+  willDeliver
+) => {
+  try {
     const post = {
-      description:description
+      description: description,
+    };
+    if (location) {
+      post.location = location;
     }
-    if (location){
-      post.location = location
+    if (price) {
+      post.price = price;
     }
-    if(price){
-      post.price = price
-    }
-    const {success, error,data}= await callAPI('/posts',{
+    const { success, error, data } = await callAPI("/posts", {
       token: token,
       method: "POST",
-      body:{
-        post:{
+      body: {
+        post: {
           title,
           description,
           price,
           location,
-          willDeliver
-        }
-      }
+          willDeliver,
+        },
+      },
+    });
+    if (success) {
+      return {
+        error: null,
+        post: data.post,
+      };
+    } else {
+      return {
+        error: null,
+        post: data.post,
+      };
+    }
+  } catch (error) {
+    console.error(error, "error posting posts");
+
+    return {
+      error: "Failed to create post",
+      post: null,
+    };
+  }
+};
+
+export const deletePost = async (token, postId)=>{
+  try{
+    const {success, error, data} = await callAPI(`/posts/${postId}`,{
+      method:"DELETE",
+      token: token
     })
     if (success){
-      return{
-        error:null,
-        post: data.post
+      return {
+        error: null,
+        data: null
       }
     }else{
       return{
-        error:null,
-        post:data.post
+        error: error.message,
+        data: null
       }
     }
   }catch(error){
-    console.error(error, "error posting posts");
-
+    console.error(error, "delete /posts/postsID FAILED");
     return{
-      error: 'Failed to create post',
-      post: null
+      error:"Failed to delete post",
+      data:null
     }
   }
 }
