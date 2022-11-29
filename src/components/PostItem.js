@@ -1,20 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const PostItem = ({ posts, children }) => {
+const PostItem = ({ posts }) => {
   return (
     <div>
-      <div className="extra content">
-        <div className=" center aligned header">
-          <p id="postTitle">{posts.title}</p>
-          <p id="postDescription">{posts.description}</p>
-          <p>{posts.price}</p>
-          <br></br>
-          <div id="postUsername">{posts.author.username}</div>
-
-          <Link id="viewPost" to="">
-            View Post
-          </Link>
+      <div>
+       
+        <div>
+          <p >
+            <div className="extra content">
+              <div className=" center aligned header">
+                <b id="postTitle">{posts.title}</b>
+                <p id="postDescription">{posts.description}</p>
+                <b>{posts.price}</b>
+                <br></br>
+                <div id = "postUsername">{posts.author.username}</div>
+                
+                <Link to="">View Post</Link>
+              </div>
+            </div>
+          </p>
         </div>
       </div>
     </div>

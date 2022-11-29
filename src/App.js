@@ -1,7 +1,7 @@
 //Imports
 import React, { useState, useEffect } from "react";
 import { Route, Link, Switch, useHistory } from "react-router-dom";
-import { Home, Posts, AccountForm, PostsCreateForm } from "./components";
+import { Home, Posts, AccountForm, PostsCreateForm, PostDetail } from "./components";
 // import Switch from "react-switch";
 import { fetchPosts, fetchGuest } from "./api/api";
 import "./App.css";
@@ -30,7 +30,7 @@ export const App = () => {
     getPosts();
   }, []);
 
-  ///need to get and set Guest
+  ///useEffec to get Guest 
   useEffect(() => {
     if (token) {
       const getGuest = async () => {
@@ -42,16 +42,13 @@ export const App = () => {
   }, [token]);
 
   useEffect(() => {
-    window.localStorage.setItem("token", token);
-  }, [token]);
-
-  useEffect(() => {
     if (token) {
         window.localStorage.setItem("token", token);
     } else {
         window.localStorage.removeItem("token");
     }
 }, [token]);
+
 
   const logOut = () => {
     setToken("");
@@ -95,6 +92,10 @@ export const App = () => {
 
         <Route className="item" path="/posts/create">
           <PostsCreateForm token ={token} setPosts={setPosts}/>
+        </Route>
+
+        <Route className="item" path="/Posts/:postId">
+        <PostDetail token={token} posts={posts} />
         </Route>
 
         <Route className="item" path="/posts">

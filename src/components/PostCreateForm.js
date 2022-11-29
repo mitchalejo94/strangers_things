@@ -16,7 +16,7 @@ const PostsCreateForm = ({ token, setPosts }) => {
   return (
     <form
     id = "createForm"
-      
+      className="ui form"
       onSubmit={async (event) => {
         event.preventDefault();
 
@@ -99,21 +99,6 @@ const PostsCreateForm = ({ token, setPosts }) => {
           value={location}
           onChange={(event) => {
             setLocation(event.target.value);
-          }}
-        ></input>
-      </div>
-
-      <div className="field">
-        <label htmlFor="canDeliver"> Can Deliver</label>
-        <input
-          name="canDeliver"
-          type="text"
-          className="field"
-          placeholder="Can Deliver"
-          autoComplete="off"
-          value={willDeliver}
-          onChange={(event) => {
-            setWillDeliver(event.target.value);
           }}
         ></input>
       </div>
