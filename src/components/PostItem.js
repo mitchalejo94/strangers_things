@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const PostItem = ({ posts }) => {
+const PostItem = ({ posts, headerElement, children  }) => {
   return (
-    <div>
       <div>
        
         <div>
@@ -16,13 +15,13 @@ const PostItem = ({ posts }) => {
                 <br></br>
                 <div id = "postUsername">{posts.author.username}</div>
                 
-                <Link to="">View Post</Link>
+                <Link to={`/Posts/${posts._id}`}>View Post</Link>
               </div>
             </div>
           </p>
         </div>
       </div>
-    </div>
+   
   );
 };
 
