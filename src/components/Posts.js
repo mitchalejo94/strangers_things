@@ -90,6 +90,7 @@ const Posts = ({ posts, setPosts, token  }) => {
       </Link>
       <div>
         {filteredPosts.map((item) => {
+          console.log(item.isAuthor);
           return (
             <PostItem
               key={item._id}
