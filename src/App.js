@@ -17,26 +17,6 @@ export const App = () => {
   //Assigning variable to useHistory
   const history = useHistory();
 
-  //useEffect to fetchPosts
-  // useEffect(() => {
-  //   const getPosts = async () => {
-  //   //   try {
-  //   //     const result = await fetchPosts();
-  //   //     setPosts(result);
-  //   //   } catch (error) {
-  //   //     console.error(error);
-  //   //   }
-  //   // };
-
-  //   const {error, posts} = await fetchPosts (token)
-
-  //   if(error){
-  //     console.error(error);
-  //   }
-  //   setPosts (posts)
-  // }
-  //   getPosts();
-  // }, []);
 
   useEffect(() => {
     const getPosts = async () => {
@@ -70,7 +50,7 @@ export const App = () => {
 
 
   const logOut = () => {
-    setToken("");
+    setToken(null);
     setGuest(null);
     history.push("/");
   };
@@ -89,7 +69,7 @@ export const App = () => {
         </Link> */}
         <div className="right menu">
           {token ? (
-            <Link onClick={logOut} className="item">
+            <Link onClick={logOut} className="item" to="/account/login">
               Log Out
             </Link>
           ) : (
@@ -118,7 +98,7 @@ export const App = () => {
         </Route>
 
         <Route className="item" path="/posts">
-          <Posts posts={posts} />
+          <Posts posts={posts} token= {token} setPosts = {setPosts} />
         </Route>
 
         <Route className="item" path="/account/:action">
