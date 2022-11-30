@@ -18,24 +18,43 @@ export const App = () => {
   const history = useHistory();
 
   //useEffect to fetchPosts
+  // useEffect(() => {
+  //   const getPosts = async () => {
+  //   //   try {
+  //   //     const result = await fetchPosts();
+  //   //     setPosts(result);
+  //   //   } catch (error) {
+  //   //     console.error(error);
+  //   //   }
+  //   // };
+
+  //   const {error, posts} = await fetchPosts (token)
+
+  //   if(error){
+  //     console.error(error);
+  //   }
+  //   setPosts (posts)
+  // }
+  //   getPosts();
+  // }, []);
+
   useEffect(() => {
     const getPosts = async () => {
-      try {
-        const result = await fetchPosts();
-        setPosts(result);
-      } catch (error) {
-        console.error(error);
-      }
+        const {error, posts} = await fetchPosts(token);
+        if (error) {
+            console.error(error);
+        }
+        setPosts(posts);
     };
     getPosts();
-  }, []);
+}, []);
 
-  ///useEffec to get Guest 
+  ///useEffect to get Guest 
   useEffect(() => {
     if (token) {
       const getGuest = async () => {
-        const { guest } = await fetchGuest(token);
-        setGuest(guest);
+        const { username } = await fetchGuest(token);
+        setGuest(username);
       };
       getGuest();
     }

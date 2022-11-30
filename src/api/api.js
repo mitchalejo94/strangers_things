@@ -329,14 +329,39 @@ const callAPI = async (endpointPath, defaultOptions = {}) => {
 };
 
 //FETCH FUNCTIONS
-export const fetchPosts = async () => {
+// export const fetchPosts = async () => {
+//   try {
+//     const response = await fetch(`${URL}/posts`);
+//     console.log("Response", response);
+//     const { data } = await response.json();
+//     return data.posts;
+//   } catch (error) {
+//     console.error("Error fetching Posts", error);
+//   }
+// };
+
+export const fetchPosts = async (token) => {
   try {
-    const response = await fetch(`${URL}/posts`);
-    console.log("Response", response);
-    const { data } = await response.json();
-    return data.posts;
+    const {success, error, data} = await callAPI('/posts', {
+      token: token
+    });
+    if (success) {
+      return {
+        error: null,
+        posts: data.posts
+      };
+    } else {
+      return {
+        error: error.message,
+        posts: []
+      };
+    }
   } catch (error) {
-    console.error("Error fetching Posts", error);
+    console.error("There was an error registering the user,", error);
+    return {
+      error: 'Failed to load Posts',
+      posts: []
+    };
   }
 };
 
